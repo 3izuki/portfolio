@@ -5,8 +5,7 @@ const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('intr
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 const loader = new THREE.TextureLoader();
-loader.load('images/your-image.jpg', (texture) => {
-    console.log('Texture loaded successfully');
+loader.load('topimage.png', (texture) => {
     const geometry = new THREE.PlaneGeometry(2, 2);
     const material = new THREE.ShaderMaterial({
         uniforms: {
@@ -72,7 +71,6 @@ loader.load('images/your-image.jpg', (texture) => {
             }
         `
     });
-    console.log('Material created successfully');
     const plane = new THREE.Mesh(geometry, material);
     scene.add(plane);
 
@@ -85,7 +83,6 @@ loader.load('images/your-image.jpg', (texture) => {
     }
 
     animate();
-    console.log('Animation started');
 });
 
 window.addEventListener('resize', () => {
