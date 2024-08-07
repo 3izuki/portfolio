@@ -5,7 +5,8 @@ const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('intr
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 const loader = new THREE.TextureLoader();
-loader.load('topimage.png', (texture) => {
+loader.load('images/your-image.jpg', (texture) => {
+    console.log('Texture loaded successfully');
     const geometry = new THREE.PlaneGeometry(2, 2);
     const material = new THREE.ShaderMaterial({
         uniforms: {
@@ -23,7 +24,6 @@ loader.load('topimage.png', (texture) => {
             uniform vec2 resolution;
             uniform sampler2D texture;
 
-            // Simplex noise function
             vec3 permute(vec3 x) {
                 return mod(((x*34.0)+1.0)*x, 289.0);
             }
@@ -72,22 +72,6 @@ loader.load('topimage.png', (texture) => {
             }
         `
     });
-    const plane = new THREE.Mesh(geometry, material);
-    scene.add(plane);
-
-    camera.position.z = 1;
-
-    function animate() {
-        requestAnimationFrame(animate);
-        material.uniforms.time.value += 0.05;
-        renderer.render(scene, camera);
-    }
-
-    animate();
-});
-
-window.addEventListener('resize', () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    material.uniforms.resolution.value.set(window.innerWidth, window.innerHeight);
-});
+    console.log('Material created successfully');
+    const plane = new THREE.Mesh
 
