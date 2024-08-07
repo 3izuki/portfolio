@@ -73,5 +73,22 @@ loader.load('images/your-image.jpg', (texture) => {
         `
     });
     console.log('Material created successfully');
-    const plane = new THREE.Mesh
+    const plane = new THREE.Mesh(geometry, material);
+    scene.add(plane);
 
+    camera.position.z = 1;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        material.uniforms.time.value += 0.05;
+        renderer.render(scene, camera);
+    }
+
+    animate();
+    console.log('Animation started');
+});
+
+window.addEventListener('resize', () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    material.uniforms.resolution.value.set(window.innerWidth, window.innerHeight);
+});
