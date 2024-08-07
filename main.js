@@ -5,7 +5,7 @@ const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('intr
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 const loader = new THREE.TextureLoader();
-loader.load('images/your-image.jpg', (texture) => {
+loader.load('トップ画像.png', (texture) => {
     const geometry = new THREE.PlaneGeometry(2, 2);
     const material = new THREE.ShaderMaterial({
         uniforms: {
